@@ -13,8 +13,14 @@ namespace converter
             Console.WriteLine("write your number");
             int num = 0;
             int.TryParse(Console.ReadLine(), out num);
-            Console.WriteLine(num*2);
+            Console.WriteLine(num*12+" inches");
             Console.ReadLine();
+            switch (num)
+            {
+                case 0: Console.WriteLine("");
+                    break;
+                default:
+            }
         }
     }
 }
