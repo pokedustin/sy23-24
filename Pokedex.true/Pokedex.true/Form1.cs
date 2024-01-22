@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,35 @@ namespace Pokedex.@true
 
         private void label2_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            debugbox.Text += nametext.Text;
+            debugbox.Text += "|";
+            debugbox.Text += typetext.Text;
+            debugbox.Text += "|";
+            debugbox.Text += leveltext.Text;
+            debugbox.Text += "|";
+            debugbox.Text += atktext.Text;
+            debugbox.Text += "|";
+            debugbox.Text += gentext.Text;
+            debugbox.Text += "|";
+            debugbox.Text += HPtext.Text;
+            debugbox.Text += "|";
+            debugbox.Text += deftext.Text;
+            debugbox.Text += "|";
+            debugbox.Text += Legendcheck.Checked;
+            debugbox.Text += "|";
+            debugbox.Text += Shinycheck.Checked;
+            debugbox.Text += "|";
+            debugbox.Text += spatktext.Text;
+            debugbox.Text += "|";
+            debugbox.Text += spdeftext.Text;
+            debugbox.Text = "|";
+
+
 
         }
     }
