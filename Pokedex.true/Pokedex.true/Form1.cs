@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,9 +72,19 @@ namespace Pokedex.@true
             debugbox.Text += spatktext.Text;
             debugbox.Text += "|";
             debugbox.Text += spdeftext.Text;
-            debugbox.Text = "|";
+            debugbox.Text += "|";
+            if (Legendcheck.Checked && Shinycheck.Checked)
+            {
+                debugbox.Text += "Hacked";
+                debugbox.Text += "|";
+            }
+            StreamWriter outfile = new StreamWriter("Pokemon.txt");
+            outfile.Write(debugbox.Text);
+            outfile.Close();
 
-
+        }
+        private void ShowPokemon()
+        {
 
         }
     }
