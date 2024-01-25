@@ -47,12 +47,16 @@
             this.leveltext = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Savebutton = new System.Windows.Forms.Button();
+            this.nextbutton = new System.Windows.Forms.Button();
             this.debugbox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.Shinycheck = new System.Windows.Forms.CheckBox();
             this.Legendcheck = new System.Windows.Forms.CheckBox();
+            this.Previousbutton = new System.Windows.Forms.Button();
+            this.Currentlabel = new System.Windows.Forms.Label();
+            this.currentbutton = new System.Windows.Forms.Button();
+            this.Lastbutton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -210,24 +214,25 @@
             this.label10.TabIndex = 20;
             this.label10.Text = "Legendary?";
             // 
-            // button1
+            // Savebutton
             // 
-            this.button1.Location = new System.Drawing.Point(494, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Savebutton.Location = new System.Drawing.Point(494, 28);
+            this.Savebutton.Name = "Savebutton";
+            this.Savebutton.Size = new System.Drawing.Size(75, 23);
+            this.Savebutton.TabIndex = 21;
+            this.Savebutton.Text = "Save";
+            this.Savebutton.UseVisualStyleBackColor = true;
+            this.Savebutton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // nextbutton
             // 
-            this.button2.Location = new System.Drawing.Point(538, 166);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "Read";
-            this.button2.UseVisualStyleBackColor = true;
+            this.nextbutton.Location = new System.Drawing.Point(538, 166);
+            this.nextbutton.Name = "nextbutton";
+            this.nextbutton.Size = new System.Drawing.Size(75, 23);
+            this.nextbutton.TabIndex = 22;
+            this.nextbutton.Text = "Next";
+            this.nextbutton.UseVisualStyleBackColor = true;
+            this.nextbutton.Click += new System.EventHandler(this.nextbutton_Click);
             // 
             // debugbox
             // 
@@ -264,17 +269,60 @@
             this.Legendcheck.TabIndex = 26;
             this.Legendcheck.UseVisualStyleBackColor = true;
             // 
+            // Previousbutton
+            // 
+            this.Previousbutton.Location = new System.Drawing.Point(348, 166);
+            this.Previousbutton.Name = "Previousbutton";
+            this.Previousbutton.Size = new System.Drawing.Size(75, 23);
+            this.Previousbutton.TabIndex = 27;
+            this.Previousbutton.Text = "Previous";
+            this.Previousbutton.UseVisualStyleBackColor = true;
+            this.Previousbutton.Click += new System.EventHandler(this.Previousbutton_Click);
+            // 
+            // Currentlabel
+            // 
+            this.Currentlabel.AutoSize = true;
+            this.Currentlabel.Location = new System.Drawing.Point(409, 115);
+            this.Currentlabel.Name = "Currentlabel";
+            this.Currentlabel.Size = new System.Drawing.Size(49, 16);
+            this.Currentlabel.TabIndex = 28;
+            this.Currentlabel.Text = "Current";
+            // 
+            // currentbutton
+            // 
+            this.currentbutton.Location = new System.Drawing.Point(441, 166);
+            this.currentbutton.Name = "currentbutton";
+            this.currentbutton.Size = new System.Drawing.Size(75, 23);
+            this.currentbutton.TabIndex = 29;
+            this.currentbutton.Text = "Current";
+            this.currentbutton.UseVisualStyleBackColor = true;
+            this.currentbutton.Click += new System.EventHandler(this.currentbutton_Click);
+            // 
+            // Lastbutton
+            // 
+            this.Lastbutton.Location = new System.Drawing.Point(631, 165);
+            this.Lastbutton.Name = "Lastbutton";
+            this.Lastbutton.Size = new System.Drawing.Size(75, 23);
+            this.Lastbutton.TabIndex = 30;
+            this.Lastbutton.Text = "Last";
+            this.Lastbutton.UseVisualStyleBackColor = true;
+            this.Lastbutton.Click += new System.EventHandler(this.Lastbutton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Lastbutton);
+            this.Controls.Add(this.currentbutton);
+            this.Controls.Add(this.Currentlabel);
+            this.Controls.Add(this.Previousbutton);
             this.Controls.Add(this.Legendcheck);
             this.Controls.Add(this.Shinycheck);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.debugbox);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.nextbutton);
+            this.Controls.Add(this.Savebutton);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.leveltext);
@@ -323,12 +371,16 @@
         private System.Windows.Forms.TextBox leveltext;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Savebutton;
+        private System.Windows.Forms.Button nextbutton;
         private System.Windows.Forms.TextBox debugbox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckBox Shinycheck;
         private System.Windows.Forms.CheckBox Legendcheck;
+        private System.Windows.Forms.Button Previousbutton;
+        private System.Windows.Forms.Label Currentlabel;
+        private System.Windows.Forms.Button currentbutton;
+        private System.Windows.Forms.Button Lastbutton;
     }
 }
 
