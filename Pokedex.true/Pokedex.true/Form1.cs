@@ -31,6 +31,8 @@ namespace Pokedex.@true
     {
         private int current;
         private int last;
+        private int count;
+        private Pokemon[] pokemons;
         public Form1()
         {
             InitializeComponent();
@@ -65,7 +67,15 @@ namespace Pokedex.@true
         {
             if (File.Exists("Pokemon.txt"))
             {
-                StreamReader infile=new
+                StreamReader infile = new StreamReader("Pokemon.txt");
+                while (infile.EndOfStream)
+                {
+                    string S=infile.ReadLine();
+                    Pokemon p=ReadPokemon(S);
+                    ShowPokemon(p);
+                    count++;
+                    
+                }
             }
         }
 
@@ -81,42 +91,43 @@ namespace Pokedex.@true
 
         private void button1_Click(object sender, EventArgs e)
         {
-            debugbox.Text += nametext.Text;
-            debugbox.Text += "|";
-            debugbox.Text += typetext.Text;
-            debugbox.Text += "|";
-            debugbox.Text += leveltext.Text;
-            debugbox.Text += "|";
-            debugbox.Text += atktext.Text;
-            debugbox.Text += "|";
-            debugbox.Text += gentext.Text;
-            debugbox.Text += "|";
-            debugbox.Text += HPtext.Text;
-            debugbox.Text += "|";
-            debugbox.Text += deftext.Text;
-            debugbox.Text += "|";
-            debugbox.Text += Legendcheck.Checked;
-            debugbox.Text += "|";
-            debugbox.Text += Shinycheck.Checked;
-            debugbox.Text += "|";
-            debugbox.Text += spatktext.Text;
-            debugbox.Text += "|";
-            debugbox.Text += spdeftext.Text;
-            debugbox.Text += "|";
+            string tmp = "";
+            tmp += nametext.Text;
+            tmp += "|";
+            tmp += typetext.Text;
+            tmp += "|";
+            tmp += leveltext.Text;
+            tmp += "|";
+            tmp += atktext.Text;
+            tmp += "|";
+            tmp += gentext.Text;
+            tmp += "|";
+            tmp += HPtext.Text;
+            tmp += "|";
+            tmp += deftext.Text;
+            tmp += "|";
+            tmp += Legendcheck.Checked;
+            tmp += "|";
+            tmp += Shinycheck.Checked;
+            tmp += "|";
+            tmp += spatktext.Text;
+            tmp += "|";
+            tmp += spdeftext.Text;
+            tmp += "|";
             if (Legendcheck.Checked && Shinycheck.Checked)
             {
                 debugbox.Text += "Hacked";
                 debugbox.Text += "|";
             }
             StreamWriter outfile = new StreamWriter("Pokemon.txt");
-            outfile.Write(debugbox.Text);
+            outfile.Write(tmp);
             outfile.Close();
 
         }
 
-        private void ShowPokemon()
+        private void ShowPokemon(Pokemon p)
         {
-
+            nametext.Text = p.name;
         }
 
         
@@ -147,6 +158,27 @@ namespace Pokedex.@true
                 current++;
                 Currentlabel.Text = current.ToString();
             }
+        }
+
+        private void clear()
+        {
+            nametext.Text = "";
+            typetext.Text = "";
+            leveltext.Text="";
+            atktext.Text = "";
+            gentext.Text = "";
+            HPtext.Text = "";
+            deftext.Text = "";
+            Legendcheck.Checked = false;
+            Shinycheck.Checked = false;
+            spatktext.Text = "";
+            spdeftext.Text="";
+        }
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            current=count;
+            count++;
+
         }
     }
 }
