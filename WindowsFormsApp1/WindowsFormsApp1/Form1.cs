@@ -12,6 +12,11 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        public string Name;
+        public string Creator;
+        public string character;
+        public int Revenue;
+
         public Form1()
         {
             InitializeComponent();
