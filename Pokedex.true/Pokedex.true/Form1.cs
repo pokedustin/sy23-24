@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32.SafeHandles;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -65,6 +66,7 @@ namespace Pokedex.@true
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+
             if (File.Exists("Pokemon.txt"))
             {
                 StreamReader infile = new StreamReader("Pokemon.txt");
@@ -76,6 +78,8 @@ namespace Pokedex.@true
                     count++;
                     
                 }
+                infile.Close();
+                ShowPokemon(pokemons[0]);
             }
         }
 
