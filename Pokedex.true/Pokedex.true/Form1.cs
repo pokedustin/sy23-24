@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 public struct Pokemon 
@@ -33,7 +34,7 @@ namespace Pokedex.@true
         private int current;
         private int last;
         private int count;
-        private Pokemon[] pokemons;
+        private Pokemon[] pokemons=new Pokemon[50];
         public Form1()
         {
             InitializeComponent();
@@ -43,24 +44,8 @@ namespace Pokedex.@true
         }
         private Pokemon ReadPokemon(string s)
         {
-            Pokemon p = new Pokemon();
-            string[] fields = s.Split('|');
-            p.name = fields[0];
-            p.Type = fields[1];
-            p.level = int.Parse(fields[2]);
-            p.atk = int.Parse( fields[3]);
-            p.def = int.Parse(fields[4]);
-            p.HP = int.Parse(fields[5]);
-            p.Exp = int.Parse(fields[6]);
-            if (fields[7] == "True")
-                p.legendary = true;
-            else
-                p.legendary = false;
-            if (fields[8] == "True")
-                p.Shiny = true;
-            else
-                p.Shiny = false;
-            p.generation = int.Parse(fields[9]);
+            Pokemon p = JsonSerializer.Deserialize<Pokemon>(s);
+            
 
             return p;
         }
@@ -80,6 +65,23 @@ namespace Pokedex.@true
                 }
                 infile.Close();
                 ShowPokemon(pokemons[0]);
+                
+            }
+            else
+            {
+                Pokemon p = new Pokemon();
+                p.name = "pikachu";
+                p.spatk = 75;
+                p.atk = 65;
+                p.def = 25;
+                p.spdef = 25;
+                p.HP = 38;
+                p.level = 17;
+                p.Exp = 30507;
+                p.generation = 1;
+                p.legendary=false;
+                p.Shiny=true;
+                pokemons[0] = p;
             }
         }
 
@@ -95,7 +97,8 @@ namespace Pokedex.@true
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string tmp = "";
+            Save();
+           /* string tmp = "";
             tmp += nametext.Text;
             tmp += "|";
             tmp += typetext.Text;
@@ -125,8 +128,18 @@ namespace Pokedex.@true
             }
             StreamWriter outfile = new StreamWriter("Pokemon.txt");
             outfile.Write(tmp);
-            outfile.Close();
+            outfile.Close();*/
 
+        }
+        public void Save()
+        {
+            StreamWriter outFile = new System.IO.StreamWriter("Pokemon.txt");
+            for (int i = 0; i < count; i++)
+            {
+                string jsonString = JsonSerializer.Serialize(pokemons[i]);
+                outFile.WriteLine(jsonString);
+            }
+            outFile.Close();
         }
 
         private void ShowPokemon(Pokemon p)
@@ -138,29 +151,40 @@ namespace Pokedex.@true
 
         private void Previousbutton_Click(object sender, EventArgs e)
         {
-            if (current > 1)
-            {
-                current--;
-                Currentlabel.Text=current.ToString();
-            }
+            Save();
+            current = 0;
+            Currentlabel.Text = current.ToString();
+            ShowPokemon(pokemons[current]);
         }
 
         private void Lastbutton_Click(object sender, EventArgs e)
         {
-            current = last;
+            Save();
+            current = count - 1;
+            Currentlabel.Text = current.ToString();
+            ShowPokemon(pokemons[current]);
         }
 
         private void currentbutton_Click(object sender, EventArgs e)
         {
-
+            if (current > 0)
+            {
+                Save();
+                //this line makes you a cool programmer!
+                current--;
+                Currentlabel.Text = current.ToString();
+                ShowPokemon(pokemons[current]);
+            }
         }
 
         private void nextbutton_Click(object sender, EventArgs e)
         {
-            if (current < 1)
+            if (current < count - 1)
             {
+                Save();
                 current++;
                 Currentlabel.Text = current.ToString();
+                ShowPokemon(pokemons[current]);
             }
         }
 
