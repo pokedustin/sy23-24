@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1846E0B9-671C-4C6B-917F-501DF3C22C5B}</ProjectGuid>
+    <ProjectGuid>{43569000-1535-43B8-9628-AF5EF34A5C23}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Pokedex.true</RootNamespace>
-    <AssemblyName>Pokedex.@true</AssemblyName>
+    <RootNamespace>day</RootNamespace>
+    <AssemblyName>day</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -74,7 +74,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>

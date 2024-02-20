@@ -11,20 +11,22 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-public struct Pokemon 
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+public class Pokemon 
 {
-    public string name;
-    public string Type;
-    public int level;
-    public int HP;
-    public int spdef;
-    public int spatk;
-    public int atk;
-    public int def;
-    public int Exp;
-    public bool legendary;
-    public bool Shiny;
-    public int generation;
+    public string name { get; set; }
+    public string Type { get; set; }
+    public int level { get; set; }
+    public int HP { get; set; }
+    public int spdef { get; set; }
+    public int spatk { get; set; }
+    public int atk { get; set; }
+    public int def { get; set; }
+    public int Exp { get; set; }
+    public bool legendary { get; set; }
+    public bool Shiny { get; set; }
+    public int generation { get; set; }
 }
 namespace Pokedex.@true
 {
@@ -48,6 +50,28 @@ namespace Pokedex.@true
             
 
             return p;
+        }
+        public void updatepokemon()
+        {
+            Pokemon p = pokemons[current];
+            if (p != null)
+            {
+                p.name = nametext.Text;
+                p.Type = typetext.Text;
+                p.level = int.Parse(leveltext.Text);
+
+                p.HP = int.Parse(HPtext.Text);
+
+                if (Legendheck.Checked)
+                    p.Legendary = true;
+                else
+                    p.Legendary = false;
+                if (shinyCbox.Checked)
+                    p.Shiny = true;
+                else
+                    p.Shiny = false;
+                p.Gen = int.Parse(genUpDown.Value.ToString());
+            }
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -144,7 +168,9 @@ namespace Pokedex.@true
 
         private void ShowPokemon(Pokemon p)
         {
+            if (p != null) ;
             nametext.Text = p.name;
+            typetext.Text = p.Type;
         }
 
         

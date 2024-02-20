@@ -1,5 +1,4 @@
-﻿namespace Pokedex.@true
-{
+﻿namespace Pokedex.{
     partial class Form1
     {
         /// <summary>
